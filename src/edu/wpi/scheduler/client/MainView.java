@@ -15,6 +15,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
+import com.google.gwt.user.client.ui.InlineHTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -44,6 +45,9 @@ public class MainView extends Composite {
 	Label yearLabel;
 	
 	@UiField
+	InlineHTML oldSchedLink;
+	
+	@UiField
 	Label updatedLabel;
 	
 
@@ -68,7 +72,20 @@ public class MainView extends Composite {
 				@Override
 				public void onResponseReceived(Request req, Response resp) {
 					String text = resp.getText();
-					yearLabel.setText(text);
+					
+					// first line is year. second line is true or false: whether to display oldSchedLink
+					String[] splitText = text.split("\n");
+					
+					//set yearLabel from first line
+					yearLabel.setText(splitText[0]);
+					
+					//convert second line to boolean
+					boolean showOldSchedLink = Boolean.parseBoolean(splitText[1]);
+					
+					//if true, display the label with oldSchedLink
+					if (showOldSchedLink) {
+						oldSchedLink.setHTML("Looking for this year's schedule? <a style='color:white;text-decoration:underline;' href='/old'>Click here.</a>");
+					}
 				}
 				
 				@Override

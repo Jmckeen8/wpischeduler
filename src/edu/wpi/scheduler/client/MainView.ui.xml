@@ -60,18 +60,18 @@
 						</g:north>
 					</g:DockLayoutPanel>
 				</g:west>
-				<g:west size="270">
+				<g:west size="280">
 					<g:DockLayoutPanel styleName='{style.topBarNoBottom}'>
-						<g:north size="12">
+						<g:north size="11">
 							<g:Label styleName='{style.authorLabel}'></g:Label>
 						</g:north>
-						<g:north size="12">
+						<g:north size="11">
 							<g:Label styleName='{style.authorLabel}'></g:Label>
 						</g:north>
-						<g:north size="12">
-							<g:Label styleName='{style.authorLabel}'></g:Label>
+						<g:north size="14">
+							<g:InlineHTML ui:field='oldSchedLink' styleName='{style.updatedTimestamp}'></g:InlineHTML>
 						</g:north>
-						<g:north size="12">
+						<g:north size="14">
 							<g:Label ui:field='updatedLabel' styleName='{style.updatedTimestamp}'></g:Label>
 						</g:north>
 					</g:DockLayoutPanel>
